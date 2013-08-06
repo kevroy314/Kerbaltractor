@@ -81,7 +81,7 @@ namespace Kerbaltractor
 
         void shrinkButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            shrinkToggle();
         }
 
         void button_MouseLeave(object sender, MouseEventArgs e)
@@ -105,29 +105,32 @@ namespace Kerbaltractor
 
         #region Window Events
 
+        void shrinkToggle()
+        {
+            //If the window is already shrunk
+            if (shrunk)
+            {
+                //Restore it
+                this.Width = savedWidth;
+                this.Height = savedHeight;
+            }
+            else
+            {
+                //Shrink it
+                savedWidth = this.Width;
+                savedHeight = this.Height;
+                this.Width = this.MinWidth;
+                this.Height = this.MinHeight;
+            }
+            //Toggle shrunk state
+            shrunk = !shrunk;
+        }
+
         void windowBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //If the border is doubleclicked
             if (e.ClickCount == 2)
-            {
-                //If the window is already shrunk
-                if (shrunk)
-                {
-                    //Restore it
-                    this.Width = savedWidth;
-                    this.Height = savedHeight;
-                }
-                else
-                {
-                    //Shrink it
-                    savedWidth = this.Width;
-                    savedHeight = this.Height;
-                    this.Width = this.MinWidth;
-                    this.Height = this.MinHeight;
-                }
-                //Toggle shrunk state
-                shrunk = !shrunk;
-            }
+                shrinkToggle();
         }
 
         void MainWindow_MouseDoubleClick(object sender, MouseButtonEventArgs e)

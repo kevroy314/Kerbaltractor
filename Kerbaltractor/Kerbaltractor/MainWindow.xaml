@@ -14,9 +14,12 @@
             </Canvas>
         </Popup>
         <Image Height="350" HorizontalAlignment="Left" Name="displayImage" Stretch="Fill" VerticalAlignment="Top" Width="525" Margin="0,0,0,0" OpacityMask="#63FFFFFF" />
-        <Rectangle Name="minimizedButton" Stroke="#29DDDDDD" Width="21" Margin="144,0,338,0" Height="11" Fill="#297F7F7F" VerticalAlignment="Top" Panel.ZIndex="2" />
-        <Rectangle Fill="#297F7F7F" Height="11" Margin="117,0,365,0" Name="shrinkButton" Panel.ZIndex="2" Stroke="#29DDDDDD" VerticalAlignment="Top" Width="21" />
+        <Rectangle Name="minimizedButton" HorizontalAlignment="Right" Stroke="#29DDDDDD" Width="20" Margin="0,0,10,0" Height="11" Fill="#297F7F7F" VerticalAlignment="Top" Panel.ZIndex="2" />
+        <TextBlock Height="16" HorizontalAlignment="Right" Name="minimizeTextBlock" Text="-" VerticalAlignment="Top" Panel.ZIndex="3" Margin="0,-6,10,0" IsHitTestVisible="False" Foreground="LightGray" FontWeight="Bold" Width="20" TextAlignment="Center" FontSize="14" />
+        <Rectangle Fill="#297F7F7F" HorizontalAlignment="Right" Height="11" Margin="0,0,40,0" Name="shrinkButton" Panel.ZIndex="2" Stroke="#29DDDDDD" VerticalAlignment="Top" Width="20" IsHitTestVisible="True" />
+        <TextBlock Height="16" HorizontalAlignment="Right" Name="shrinkTextBlock" Text="&gt;&lt;" Width="20" VerticalAlignment="Top" Panel.ZIndex="3" Margin="0,-4,38,0" IsHitTestVisible="False" Foreground="LightGray" />
         <Border BorderBrush="Silver" BorderThickness="10" Height="350" HorizontalAlignment="Left" Name="windowBorder" VerticalAlignment="Top" Width="525" CornerRadius="0" Panel.ZIndex="1">
+            
         </Border>
         <Canvas Name="ellipseCanvas">
             <Line Name="line1" Stroke="Black" StrokeThickness="5" Visibility="Hidden" />
