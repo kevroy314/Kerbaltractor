@@ -1,21 +1,23 @@
 ﻿<Window x:Class="Kerbaltractor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Background="#2FFFFFFF" Topmost="True" BorderThickness="0" MinWidth="197" MinHeight="53">
+        Title="MainWindow" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Background="#2FFFFFFF" Topmost="True" BorderThickness="0" MinWidth="197" MinHeight="48">
     <Grid>
-        <TextBox Canvas.Left="0" Canvas.Top="0" Height="33" Name="angleOutput" Width="177" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" IsReadOnly="True" Text="123.23°, 236.77°" FontSize="24" Background="#CCFFFFFF" />
+        <TextBox Canvas.Left="0" Canvas.Top="0" Height="33" Name="angleOutput" Width="177" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,0,0" IsReadOnly="True" Text="123.23°, 236.77°" FontSize="24" Background="#CCFFFFFF" VerticalContentAlignment="Center" TextAlignment="Center" />
         <Popup MouseDown="notificationPopup_MouseDown" Name="notificationPopup" AllowsTransparency="True" PopupAnimation="Fade" IsOpen="False" StaysOpen="True" Placement="Center">
             <Canvas Name="notificationCanvas" Width="250" Height="100" Background="LightGray" Margin="150">
-                <Border Name="notificationBorder" BorderThickness="3" CornerRadius="4" BorderBrush="DarkGray" Width="250" Height="100">
+                <Border Name="notificationBorder" BorderThickness="3" BorderBrush="DarkGray" Width="250" Height="100">
                     <TextBlock Name="notificationPopupText" TextWrapping="Wrap" Foreground="Black" Width="235" Margin="10,7,0,0" FontFamily="Segoe UI">
-                        Test text test text tes t ext estestdslfjsdlfkjdfglkdfg.
+                        
                     </TextBlock>
                 </Border>
             </Canvas>
         </Popup>
         <Image Height="350" HorizontalAlignment="Left" Name="displayImage" Stretch="Fill" VerticalAlignment="Top" Width="525" Margin="0,0,0,0" OpacityMask="#63FFFFFF" />
-        <Rectangle Name="minimizedButton" HorizontalAlignment="Right" Stroke="#29DDDDDD" Width="20" Margin="0,0,10,0" Height="11" Fill="#297F7F7F" VerticalAlignment="Top" Panel.ZIndex="2" />
-        <TextBlock Height="16" HorizontalAlignment="Right" Name="minimizeTextBlock" Text="-" VerticalAlignment="Top" Panel.ZIndex="3" Margin="0,-6,10,0" IsHitTestVisible="False" Foreground="LightGray" FontWeight="Bold" Width="20" TextAlignment="Center" FontSize="14" />
+        <Rectangle Name="closeButton" HorizontalAlignment="Right" Stroke="#29DDDDDD" Width="20" Margin="0,0,10,0" Height="11" Fill="#297F7F7F" VerticalAlignment="Top" Panel.ZIndex="2" />
+        <TextBlock Height="16" HorizontalAlignment="Right" Name="closeTextBlock" Text="x" VerticalAlignment="Top" Panel.ZIndex="3" Margin="0,-6,10,0" IsHitTestVisible="False" Foreground="LightGray" FontWeight="Bold" Width="20" TextAlignment="Center" FontSize="14" />
+        <Rectangle Name="minimizedButton" HorizontalAlignment="Right" Stroke="#29DDDDDD" Width="20" Margin="0,0,70,0" Height="11" Fill="#297F7F7F" VerticalAlignment="Top" Panel.ZIndex="2" />
+        <TextBlock Height="16" HorizontalAlignment="Right" Name="minimizeTextBlock" Text="-" VerticalAlignment="Top" Panel.ZIndex="3" Margin="0,-6,70,0" IsHitTestVisible="False" Foreground="LightGray" FontWeight="Bold" Width="20" TextAlignment="Center" FontSize="14" />
         <Rectangle Fill="#297F7F7F" HorizontalAlignment="Right" Height="11" Margin="0,0,40,0" Name="shrinkButton" Panel.ZIndex="2" Stroke="#29DDDDDD" VerticalAlignment="Top" Width="20" IsHitTestVisible="True" />
         <TextBlock Height="16" HorizontalAlignment="Right" Name="shrinkTextBlock" Text="&gt;&lt;" Width="20" VerticalAlignment="Top" Panel.ZIndex="3" Margin="0,-4,38,0" IsHitTestVisible="False" Foreground="LightGray" />
         <Border BorderBrush="Silver" BorderThickness="10" Height="350" HorizontalAlignment="Left" Name="windowBorder" VerticalAlignment="Top" Width="525" CornerRadius="0" Panel.ZIndex="1">

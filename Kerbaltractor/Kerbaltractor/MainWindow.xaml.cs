@@ -77,6 +77,15 @@ namespace Kerbaltractor
             shrinkButton.MouseDown += new MouseButtonEventHandler(shrinkButton_MouseDown);
             shrinkButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
             shrinkButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+
+            closeButton.MouseDown += new MouseButtonEventHandler(closeButton_MouseDown);
+            closeButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
+            closeButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+        }
+
+        void closeButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
 
         void shrinkButton_MouseDown(object sender, MouseButtonEventArgs e)
