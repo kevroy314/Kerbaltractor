@@ -14,6 +14,8 @@
             </Canvas>
         </Popup>
         <Image Height="350" HorizontalAlignment="Left" Name="displayImage" Stretch="Fill" VerticalAlignment="Top" Width="525" Margin="0,0,0,0" OpacityMask="#63FFFFFF" />
+        <Rectangle Name="minimizedButton" Stroke="#29DDDDDD" Width="21" Margin="144,0,338,0" Height="11" Fill="#297F7F7F" VerticalAlignment="Top" Panel.ZIndex="2" />
+        <Rectangle Fill="#297F7F7F" Height="11" Margin="117,0,365,0" Name="shrinkButton" Panel.ZIndex="2" Stroke="#29DDDDDD" VerticalAlignment="Top" Width="21" />
         <Border BorderBrush="Silver" BorderThickness="10" Height="350" HorizontalAlignment="Left" Name="windowBorder" VerticalAlignment="Top" Width="525" CornerRadius="0" Panel.ZIndex="1">
         </Border>
         <Canvas Name="ellipseCanvas">

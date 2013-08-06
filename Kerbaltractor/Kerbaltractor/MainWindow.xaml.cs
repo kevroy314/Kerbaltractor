@@ -69,6 +69,36 @@ namespace Kerbaltractor
             savedWidth = this.Width;
             savedHeight = this.Height;
             shrunk = false;
+
+            minimizedButton.MouseDown += new MouseButtonEventHandler(minimizedButton_MouseDown);
+            minimizedButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
+            minimizedButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+
+            shrinkButton.MouseDown += new MouseButtonEventHandler(shrinkButton_MouseDown);
+            shrinkButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
+            shrinkButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+        }
+
+        void shrinkButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        void button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Rectangle r = (Rectangle)sender;
+            r.SetValue(Rectangle.FillProperty, (SolidColorBrush)new BrushConverter().ConvertFromString("#297F7F7F"));
+        }
+
+        void button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Rectangle r = (Rectangle)sender;
+            r.SetValue(Rectangle.FillProperty, (SolidColorBrush)new BrushConverter().ConvertFromString("#FFFFFFFF"));
+        }
+
+        void minimizedButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized; 
         }
 
         #endregion
