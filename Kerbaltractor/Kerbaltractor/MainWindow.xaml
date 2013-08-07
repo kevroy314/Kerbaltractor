@@ -1,13 +1,13 @@
 ﻿<Window x:Class="Kerbaltractor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Background="#2FFFFFFF" Topmost="True" BorderThickness="0" MinWidth="197" MinHeight="48">
+        Title="MainWindow" Height="350" Width="525" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Background="#2FFFFFFF" Topmost="True" BorderThickness="0" MinWidth="197" MinHeight="48" Icon="/Kerbaltractor;component/Icon%20v2.ico">
     <Grid>
-        <TextBox Canvas.Left="0" Canvas.Top="0" Height="33" Name="angleOutput" Width="177" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,0,0" IsReadOnly="True" Text="123.23°, 236.77°" FontSize="24" Background="#CCFFFFFF" VerticalContentAlignment="Center" TextAlignment="Center" />
+        <TextBox Canvas.Left="0" Canvas.Top="0" Height="33" Name="angleOutput" Width="177" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,0,0" IsReadOnly="True" Text="123.23°, 236.77°" FontSize="24" Background="#CCFFFFFF" VerticalContentAlignment="Center" TextAlignment="Center" SelectionBrush="LightGray" UseLayoutRounding="False" OverridesDefaultStyle="False" />
         <Popup MouseDown="notificationPopup_MouseDown" Name="notificationPopup" AllowsTransparency="True" PopupAnimation="Fade" IsOpen="False" StaysOpen="True" Placement="Center">
-            <Canvas Name="notificationCanvas" Width="250" Height="100" Background="LightGray" Margin="150">
-                <Border Name="notificationBorder" BorderThickness="3" BorderBrush="DarkGray" Width="250" Height="100">
-                    <TextBlock Name="notificationPopupText" TextWrapping="Wrap" Foreground="Black" Width="235" Margin="10,7,0,0" FontFamily="Segoe UI">
+            <Canvas Name="notificationCanvas" Width="250" Height="110" Background="LightGray" Margin="150">
+                <Border Name="notificationBorder" BorderThickness="3" BorderBrush="DarkGray" Width="250" Height="110">
+                    <TextBlock Name="notificationPopupText" TextWrapping="Wrap" Foreground="Black" Width="230" Margin="5,5,0,0" FontFamily="Segoe UI">
                         
                     </TextBlock>
                 </Border>

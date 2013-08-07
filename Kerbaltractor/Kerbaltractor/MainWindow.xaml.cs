@@ -45,6 +45,18 @@ namespace Kerbaltractor
             this.SizeChanged += new SizeChangedEventHandler(MainWindow_SizeChanged); //For modifying the capture region size
             windowBorder.MouseDown += new MouseButtonEventHandler(windowBorder_MouseDown);
 
+            minimizedButton.MouseDown += new MouseButtonEventHandler(minimizedButton_MouseDown);
+            minimizedButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
+            minimizedButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+
+            shrinkButton.MouseDown += new MouseButtonEventHandler(shrinkButton_MouseDown);
+            shrinkButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
+            shrinkButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+
+            closeButton.MouseDown += new MouseButtonEventHandler(closeButton_MouseDown);
+            closeButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
+            closeButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+
             //Sync Popup Location to Window
             this.LocationChanged += delegate(object sender, EventArgs args)
             {
@@ -54,7 +66,7 @@ namespace Kerbaltractor
             };
 
             //Show instructions
-            notificationPopupText.Text = "Resize, drag, double click to place points. Escape to quit.\r\n<Click to Close...>";
+            notificationPopupText.Text = "Resize from bottom right, drag from anywhere, and double click to place points. Keep double clicking to move points. Press escape to quit. The left angle is the smaller arc, the right is the bigger arc.\r\n<Click to Close...>";
             notificationPopup.IsOpen = true;
 
             //Ellipse/Point storage variables
@@ -69,18 +81,31 @@ namespace Kerbaltractor
             savedWidth = this.Width;
             savedHeight = this.Height;
             shrunk = false;
+        }
 
-            minimizedButton.MouseDown += new MouseButtonEventHandler(minimizedButton_MouseDown);
-            minimizedButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
-            minimizedButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+        #endregion
 
-            shrinkButton.MouseDown += new MouseButtonEventHandler(shrinkButton_MouseDown);
-            shrinkButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
-            shrinkButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+        #region Window Events
 
-            closeButton.MouseDown += new MouseButtonEventHandler(closeButton_MouseDown);
-            closeButton.MouseEnter += new MouseEventHandler(button_MouseEnter);
-            closeButton.MouseLeave += new MouseEventHandler(button_MouseLeave);
+        void shrinkToggle()
+        {
+            //If the window is already shrunk
+            if (shrunk)
+            {
+                //Restore it
+                this.Width = savedWidth;
+                this.Height = savedHeight;
+            }
+            else
+            {
+                //Shrink it
+                savedWidth = this.Width;
+                savedHeight = this.Height;
+                this.Width = this.MinWidth;
+                this.Height = this.MinHeight;
+            }
+            //Toggle shrunk state
+            shrunk = !shrunk;
         }
 
         void closeButton_MouseDown(object sender, MouseButtonEventArgs e)
@@ -107,32 +132,7 @@ namespace Kerbaltractor
 
         void minimizedButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.WindowState = System.Windows.WindowState.Minimized; 
-        }
-
-        #endregion
-
-        #region Window Events
-
-        void shrinkToggle()
-        {
-            //If the window is already shrunk
-            if (shrunk)
-            {
-                //Restore it
-                this.Width = savedWidth;
-                this.Height = savedHeight;
-            }
-            else
-            {
-                //Shrink it
-                savedWidth = this.Width;
-                savedHeight = this.Height;
-                this.Width = this.MinWidth;
-                this.Height = this.MinHeight;
-            }
-            //Toggle shrunk state
-            shrunk = !shrunk;
+            this.WindowState = System.Windows.WindowState.Minimized;
         }
 
         void windowBorder_MouseDown(object sender, MouseButtonEventArgs e)
@@ -224,18 +224,22 @@ namespace Kerbaltractor
 
             //The even first when the form opens, so we ignore that case, but we close the popup if the user resizes the form
             if (e.PreviousSize.Height != 0 && e.PreviousSize.Width != 0)
-                notificationPopup_MouseDown(null, null);
+                closePopup();
             //We mark the form as not shrunk if the size is increased from the minimum manually
             if (e.PreviousSize.Width == windowBorder.MinWidth && e.PreviousSize.Height == windowBorder.MinHeight)
                 shrunk = false;
         }
 
-        private void notificationPopup_MouseDown(object sender, MouseButtonEventArgs e)
+        private void closePopup()
         {
             //Close the popup when it is clicked
             notificationPopup.PopupAnimation = System.Windows.Controls.Primitives.PopupAnimation.Fade;
-            notificationPopup.StaysOpen = false;
             notificationPopup.IsOpen = false;
+        }
+
+        private void notificationPopup_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            closePopup();
         }
 
         #endregion
